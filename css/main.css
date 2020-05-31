@@ -1,0 +1,335 @@
+*{
+    margin: auto 0px;
+}
+html{
+    font-size: 62.5%;
+    font-family: 'Dosis', sans-serif;
+}
+.container-full{
+    box-sizing: border-box;
+    padding-left: 3%;
+    padding-right: 3%;
+    left: -3%;
+}
+header{
+    display: flex;
+    padding-bottom: 35px;
+}
+
+.logo{
+    padding: 2%;
+    padding-right: 0%;
+    padding-top: 1%;
+}
+.container{
+    width: 100%;
+}
+.navbar{
+    display: flex;
+    padding-bottom: 10px;
+    width: 100%;
+}
+.navbar ul{
+    list-style: none;
+    padding-left: 3px;
+}
+.navbar ul li{
+    display: inline-block;
+    padding: 10px 5px 10px 5px ;
+    font-size: 1.3rem;
+    border-radius: 6px;
+}
+.navbar ul li .menu-link:hover {
+    color: #de8ebe;
+}
+.navbar ul li:hover ul{
+    display: flex;
+    animation-name: HienDan;
+    animation-duration: 0.7s;
+    background-color: white;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+.navbar ul li ul {
+    list-style: none;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    display: none;
+
+}
+.navbar ul li ul a{
+    border-bottom:1px ridge rgb(184, 184, 184);
+    border-radius: 0px;
+}
+.navbar ul li ul a:hover{
+    background-color: #de8ebe;
+    border: none;
+    animation-name: DoiMauDan;
+    animation-duration: 0.4s;
+}
+.navbar ul li ul li:hover{
+    color: white;
+}
+.cart-border{
+    display: flex;
+    border: 1px dashed white;
+    border-radius: 10px;
+    background-color:   rgba(199, 128, 171, 1);
+    padding: 5px 15px 5px 3px;
+}
+.cart {
+    padding: 4px;
+    background-color:#de8ebe ;
+    padding-top: -30px;
+    border-radius: 10px;
+    display: table;
+    margin-left: 30px;
+    margin-top: 1%;
+}
+.cart-info{
+    display: flex;
+    flex-direction: column;
+}
+.cart-tittle{
+    font-size: 1.2rem;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+.search-bar{
+    float: right;
+    margin: 50px 0px auto auto;
+}
+.search{
+    width: 480px;
+    height: 40px;
+    margin-right: 0px;
+    border-radius: 5px;
+    padding: 0px 10px;
+    color: black;
+}
+.submit-button{
+    height: 46px;
+    background-color: black ;
+    width: 50px;
+    margin-left: -5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.line-pink { 
+    background-color:rgba(199, 128, 171, 1);
+    height: 1px;
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    left: 0px;
+}
+.container-petdog{
+    display: flex;
+} 
+.logo-pet a:hover{
+    animation-name: LacQuaLai;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+}
+ul{
+    list-style: none;
+    padding:0px;
+}
+.footer{
+    display: flex;
+    padding-top:20px;
+    background-color: #fbfbfb;
+    flex-wrap: wrap;
+}
+.info-footer{
+    padding: 1% 1%;
+    width: 25%;
+}
+.info-footer p{
+    border-top: 1px dashed #de8ebe;
+    padding: 7px 3px;
+    font-size: 1.4rem;
+}
+.mini-footer{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    padding-left: 3%;
+}
+.mini-footer ul{
+    display: flex;
+    padding-left: 0px;
+}
+.mini-footer ul li{
+    padding: 0px 5px;
+    font-size: 1.4rem;
+}
+.mini-footer ul li a:hover{
+    color: #de8ebe;
+}
+.icon-size{
+    font-size: 20px;
+    color: rgba(199, 128, 171, 1);
+    padding-right: 5px;
+}
+.footer{
+    bottom: 0px;
+}
+/*phan thong tin san pham*/
+.list-product{
+    background-color: #ededed;
+    width: 100%;
+    height: 4%;
+    margin-top: 2%;
+    border-radius: 5px;
+}
+.tittle-product{
+    padding:10px;
+}
+.list-product ul{
+    display: flex;
+    padding: 3% 0px;
+}
+.list-product ul li{
+    padding-right:20px;
+}
+.product-info{
+    display: flex;
+    padding: 20px 0%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.product-item{
+    padding: 0px 1%;
+    text-align: center;
+}
+.container-item a img:hover{
+    transform:scale(1.05)
+}
+.product-tittle{
+    font-size: 2.6rem;
+    padding-top:2%
+}
+.product-item-info{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+}
+.product-item-info a:hover{
+    color: #de8ebe;
+}   
+.product-item a img{
+    padding-bottom: 4%;
+}
+.container-item{
+    width: 260px;
+    height: 280px;
+}
+/*back to top */
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: pink;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+  }
+  
+  #myBtn:hover {
+    background-color: #555;
+  }
+  /* top like*/
+.container-product{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      left: 70px;
+      box-sizing: border-box;
+      margin-top: 1%;
+      justify-content: space-around;
+  }
+.top-like{
+    width:20%;
+    background-color: #e0c9c9;
+    border: 2px solid  rgba(199, 128, 171, 1);
+    margin-top: 0px;
+}
+.top-like h1{
+    text-align: center;
+}
+
+.top-item{
+    display: flex;
+    justify-content: space-evenly;
+    border-top:2px solid rgba(199, 128, 171, 1);
+    padding: 10px 0px;
+}
+.top-item a i{
+    color: rgba(199, 128, 171, 1);
+}
+.product-info-details{
+      width: 70%;
+      box-sizing: border-box;
+      display: flex;
+      margin-left: 2%;
+}
+.product-image{
+    width: 35%;
+}
+.product-details{
+    width: 65%;
+    margin-top: 5px;
+}
+.product-details h1{
+    font-family: cursive;
+}
+.product-amount a{
+    font-size: 25px;
+    margin-top: 5px;
+}
+
+
+
+
+
+/*hiệu ứng keyframes*/
+@keyframes HienDan {
+    from{
+        margin-top: 45px;
+        opacity: 0;
+    }
+    to{
+        margin-top: 0;
+        opacity: 1;
+    }
+}
+@keyframes DoiMauDan{
+    from{
+        opacity: 0;;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes LacQuaLai{
+    from{
+        margin-left: -3px;
+    }
+    to{
+        margin-right: 6px;
+    }
+}
+
