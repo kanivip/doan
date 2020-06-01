@@ -40,15 +40,15 @@ function topFunction() {
         </div>
         <div class="container">
             <div class="navbar">
-            <ul>
+            <ul style="width:60%;">
                 <li style="background-color: #de8ebe;"><a class="menu-link" style=" color: white;"href="#">TRANH CHỦ</a></li>
                 <li><a class="menu-link" href="login.php">ĐĂNG NHẬP</a></li>
                 <li><a class="menu-link" href="#">THÚ CƯNG<i class="fas fa-angle-down" style="margin: 8px;"></i></a>
                     <ul>
-                        <a href="#"><li>Chó alaska Malamute</li></a>
-                        <a href="#"><li>Chó Beagle</li></a>
-                        <a href="#"><li>Chó corgi</li></a>
-                        <a href="#"><li>Chó Husky Siberian</li></a>
+                        <a href="trangsanpham.php?tensp=Alaska Malamute"><li>Chó alaska Malamute</li></a>
+                        <a href="trangsanpham.php?tensp=Chó Beagle"><li>Chó Beagle</li></a>
+                        <a href="trangsanpham.php?tensp=Chó Corgi"><li>Chó corgi</li></a>
+                        <a href="trangsanpham.php?tensp=Husky Sibersian"><li>Chó Husky Siberian</li></a>
                     </ul>
                 </li>
                 <li><a class="menu-link" href="#">PHỤ KIỆN</a></li>

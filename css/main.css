@@ -42,6 +42,9 @@ header{
 .navbar ul li .menu-link:hover {
     color: #de8ebe;
 }
+.menu-link{
+    width: 11%;
+}
 .navbar ul li:hover ul{
     display: flex;
     animation-name: HienDan;
@@ -136,6 +139,9 @@ a {
     animation-duration: 1s;
     animation-timing-function: ease-out;
     animation-iteration-count: 1;
+}
+.logo-pet{
+    width: 12%;
 }
 ul{
     list-style: none;

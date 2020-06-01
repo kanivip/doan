@@ -25,7 +25,7 @@
             <h1><?php echo $_GET['Ten'] ?></h1>
             <span>Giá tiền:<?php echo $_GET['Giatien'];?></span>
             <div class="product-amount">
-                <span>Số lượng:</span><input id="SoLuong" type="text" value="0">
+                <span>Số lượng:</span><input id="SoLuong" type="text" value="1">
                 <button onclick="Tang()" ><i class="far fa-plus-square" ></i></button>
                 <script>
                     function Tang() {
@@ -39,8 +39,8 @@
                     function Giam() {
                         var i = document.getElementById("SoLuong").value;
                         i--;
-                        if(i<=0)
-                            i=0;
+                        if(i<=1)
+                            i=1;
                     document.getElementById("SoLuong").value = i.toString();
                     }
                 </script>
