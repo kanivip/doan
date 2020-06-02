@@ -40,7 +40,7 @@ function topFunction() {
         </div>
         <div class="container">
             <div class="navbar">
-            <ul style="width:60%;">
+            <ul >
                 <li style="background-color: #de8ebe;"><a class="menu-link" style=" color: white;"href="#">TRANH CHỦ</a></li>
                 <li><a class="menu-link" href="login.php">ĐĂNG NHẬP</a></li>
                 <li><a class="menu-link" href="#">THÚ CƯNG<i class="fas fa-angle-down" style="margin: 8px;"></i></a>

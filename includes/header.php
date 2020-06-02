@@ -35,6 +35,31 @@ function topFunction() {
 }
 </script>
     <div class="container-full">
+    <?php 
+
+    if(isset($_GET['ThemGH']))
+    {
+        $GH = array();
+        if(isset($_SESSION['GH']))
+            $GH=$_SESSION['GH'];
+        $flag = false;
+        foreach($GH as $ma => $tien)
+        {
+            if($ma ==$_GET['PhanLoai'])
+            {
+            $GH[$ma] +=$_GET['Giatien'];
+            $flag=true;
+            break;
+            }
+        }
+        if(!$flag)
+        {
+            $GH[$_GET['PhanLoai']] = $_GET['Giatien'];
+        }
+        $_SESSION['GH'] = $GH;
+    }
+
+    ?>
     <header>
         <div class="logo"  >
         <a href="index.php"><img src="./image/mat-pet-logo-300x297.png" width="100%" height="180px" alt="logo pet" class="header-logo"></a>

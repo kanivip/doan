@@ -47,37 +47,12 @@
 
             </div>
             <div class="cart" style="margin-left:0px; margin-top:20px;">
-                <a href="trangcon.php?PhanLoai=<?php echo $_GET['PhanLoai']?>&&Giatien=<?php echo $_GET['Giatien']?>&&Ten=<?php echo $_GET['Ten']?>&&ThemGH=1" class="cart-link">
+                <a href="trangcon.php?PhanLoai=<?php echo $_GET['PhanLoai']?>&&Giatien=<?php echo $_GET['Giatien']?>&&Ten=<?php echo $_GET['Ten']?>&&ThemGH" class="cart-link">
                     <div class="cart-border">
                         <span style="color:white;">Thêm vào giỏ hàng</span>
                     </div>
                 </a>
             </div>
-            <?php 
-
-                    if(isset($_GET['ThemGH']))
-                    {
-                        $GH = array();
-                        if(isset($_SESSION['GH']))
-                            $GH=$_SESSION['GH'];
-                        $flag = false;
-                        foreach($GH as $ma => $tien)
-                        {
-                            if($ma ==$_GET['PhanLoai'])
-                            {
-                            $GH[$ma] +=$_GET['Giatien'];
-                            $flag=true;
-                            break;
-                            }
-                        }
-                        if(!$flag)
-                        {
-                            $GH[$_GET['PhanLoai']] = $_GET['Giatien'];
-                        }
-                        $_SESSION['GH'] = $GH;
-                    }
-                
-                ?>
             <div style="padding-top:10px;">Thông tin:Một chú chó Poodle Tiny nhỏ xinh luôn là 
                 sự lựa chọn 
                 hàng đầu của những người chơi thú cưng Việt Nam.
