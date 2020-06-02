@@ -35,6 +35,7 @@ function topFunction() {
 }
 </script>
     <div class="container-full">
+
     <?php 
 
     if(isset($_GET['ThemGH']))
@@ -47,7 +48,7 @@ function topFunction() {
         {
             if($ma ==$_GET['PhanLoai'])
             {
-            $GH[$ma] +=$_GET['Giatien'];
+            $GH[$ma] +=$_GET['Giatien']*$_GET['SoLuong'];
             $flag=true;
             break;
             }

@@ -25,25 +25,24 @@
             <h1><?php echo $_GET['Ten'] ?></h1>
             <span>Giá tiền:<?php echo $_GET['Giatien'];?></span>
             <div class="product-amount">
-                <span>Số lượng:</span><input id="SoLuong" type="text" value="1">
-                <button onclick="Tang()" ><i class="far fa-plus-square" ></i></button>
-                <script>
-                    function Tang() {
-                        var i = document.getElementById("SoLuong").value;
-                        i++;
-                    document.getElementById("SoLuong").value = i.toString();
-                    }
-                </script>
-                <button onclick="Giam()" ><i class="far fa-minus-square"></i></button>
-                <script>
-                    function Giam() {
-                        var i = document.getElementById("SoLuong").value;
-                        i--;
-                        if(i<=1)
-                            i=1;
-                    document.getElementById("SoLuong").value = i.toString();
-                    }
-                </script>
+                <span>Số lượng:</span>
+                <?php 
+                if(isset($_GET['Tang']))
+                    $_GET['SoLuong'] +=1;
+                ?>
+                <a href="trangcon.php?PhanLoai=<?php echo $_GET['PhanLoai']?>&&Giatien=<?php echo $_GET['Giatien']?>&&Ten=<?php echo $_GET['Ten']?>&&SoLuong=<?php if(isset($_GET['SoLuong'])) echo $_GET['SoLuong']; else echo 1; ?>&&Tang" ><i class="far fa-plus-square" ></i></a>
+                <?php
+                if(isset($_GET['Giam']))
+                {
+                    $_GET['SoLuong']-=1;
+                    if($_GET['SoLuong']<1)
+                        $_GET['SoLuong']=1;
+                }
+                         
+                ?>
+                <a href="trangcon.php?PhanLoai=<?php echo $_GET['PhanLoai']?>&&Giatien=<?php echo $_GET['Giatien']?>&&Ten=<?php echo $_GET['Ten']?>&&SoLuong=<?php if(isset($_GET['SoLuong'])) echo $_GET['SoLuong']; else echo 1; ?>&&Giam" ><i class="far fa-minus-square"></i></a>
+                <input id="SoLuong" type="text" value="<?php if(isset($_GET['SoLuong'])) echo $_GET['SoLuong']; else echo 1;  ?>">
+
 
             </div>
             <div class="cart" style="margin-left:0px; margin-top:20px;">
