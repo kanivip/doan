@@ -37,7 +37,7 @@ function topFunction() {
     <div class="container-full">
 
     <?php 
-
+//Gio Hang
     if(isset($_GET['ThemGH']))
     {
         $GH = array();
@@ -46,7 +46,7 @@ function topFunction() {
         $flag = false;
         foreach($GH as $ma => $tien)
         {
-            if($ma ==$_GET['PhanLoai'])
+            if($ma ==$_GET['Ten'])
             {
             $GH[$ma] +=$_GET['Giatien']*$_GET['SoLuong'];
             $flag=true;
@@ -55,7 +55,7 @@ function topFunction() {
         }
         if(!$flag)
         {
-            $GH[$_GET['PhanLoai']] = $_GET['Giatien'];
+            $GH[$_GET['Ten']] = $_GET['Giatien'];
         }
         $_SESSION['GH'] = $GH;
     }
@@ -89,7 +89,7 @@ function topFunction() {
                 
             </ul>
             <div class="cart">
-                <a href="#" class="cart-link">
+                <a href="GioHang.php" class="cart-link">
                     <div class="cart-border">
                         <i class="fas fa-shopping-cart " style=" font-size: 27px; padding: 10px 5px; color: white;"></i>
                         <div class="cart-info">

@@ -62,7 +62,7 @@ function topFunction() {
                 
             </ul>
             <div class="cart">
-                <a href="#" class="cart-link">
+                <a href="GioHang.php" class="cart-link">
                     <div class="cart-border">
                         <i class="fas fa-shopping-cart " style=" font-size: 27px; padding: 10px 5px; color: white;"></i>
                         <div class="cart-info">
@@ -101,41 +101,30 @@ function topFunction() {
             </h2>
             <div class="product-info">
             <?php 
-                $PhanLoai = "pet";
-                $GiaTien = array(
-                    "12000000",
-                    "13000000",
-                    "14000000",
-                    "15000000",
-                    "12000000",
-                    "13000000",
-                    "14000000",
-                    "15000000",
+                $Pet = array(
+                    "pet1"=>array("SAM Ú NU",15000000,1),
+                    "pet2"=>array("ĐÀN MÈO ANH LÔNG NGẮN",13000000,1),
+                    "pet3"=>array("POODLE TRẮNG",12000000,1),
+                    "pet4"=>array("HUNSKY SIỀU CUTE",10000000,1),
+                    "pet5"=>array( "cÔNG CHÚA MÈO TAI CỤP",8000000,1),
+                    "pet6"=>array("MÈO TAI CỤP XINH XINH",21000000,1),
+                    "pet7"=>array( "MÈO CHÂN NGẮN",19000000,1),
+                    "pet8"=>array("MÈO NGÁO NGƠ",16000000,1)
                 );
-                $Ten = array(
-                    "SAM Ú NU",
-                    "ĐÀN MÈO ANH LÔNG NGẮN",
-                    "POODLE TRẮNG",
-                    "HUNSKY SIỀU CUTE",
-                    "cÔNG CHÚA MÈO TAI CỤP",
-                    "MÈO TAI CỤP XINH XINH",
-                    "MÈO CHÂN NGẮN",
-                    "MÈO NGÁO NGƠ",
-                );
-                if(isset($_GET['PhanLoai']))
-                $PhanLoai = $_GET['PhanLoai'];
-                for($i=1;$i<=8;$i++)
+                //if(isset($_GET['Pet']))
+                //$PhanLoai = $_GET['Pet'];
+                foreach($Pet as $ten => $info)
                 {
             ?>
                 <div class="product-item">
                     <div class="container-item">
-                    <a href="trangcon.php?PhanLoai=<?php echo $PhanLoai,$i,"&&Giatien=",$GiaTien[$i-1],"&&Ten=",$Ten[$i-1];?>">
-                        <img src="./image/pet<?php echo $i;?>.jpg" width="260px" height="270px" alt="">
+                    <a href="trangcon.php?PhanLoai=<?php echo $ten,"&&Giatien=",$info[1],"&&Ten=",$info[0],"&&SoLuong=",$info[2];?>">
+                        <img src="./image/<?php echo $ten;?>.jpg" width="260px" height="270px" alt="">
                     </a>
                     </div>
                     <div class="product-item-info">
-                            <span style="color:#333; font-family: 'Coiny', cursive; font-weight: 700;"><a href="trangcon.php?pet=<?php echo $PhanLoai,$i,"&&Giatien=",$GiaTien[$i-1],"&&TenPet=",$Ten[$i-1];?>"><?php echo $Ten[$i-1]; ?></a></span>
-                            <span style="color:#de8ebe;"><?php echo $GiaTien[$i-1]; ?></span>
+                            <span style="color:#333; font-family: 'Coiny', cursive; font-weight: 700;"><a href="trangcon.php?PhanLoai=<?php echo $ten,"&&Giatien=",$info[1],"&&Ten=",$info[0],"&&SoLuong=",$info[2];?>"><?php echo $info[0]; ?></a></span>
+                            <span style="color:#de8ebe;"><?php echo number_format($info[1],0,",","."); ?></span>
                     </div>
                 </div>
                 <?php 
@@ -148,41 +137,30 @@ function topFunction() {
             </h2>
             <div class="product-info">
             <?php 
-                $PhanLoai = "phukien";
-                $GiaTien = array(
-                    "16000000",
-                    "18000000",
-                    "10000000",
-                    "13000000",
-                    "16000000",
-                    "18000000",
-                    "10000000",
-                    "13000000",
+                $Phukien = array(
+                    "phukien1"=>array("phụ kiện 1",12000000,1),
+                    "phukien2"=>array("phụ kiện 2",2000000,1),
+                    "phukien3"=>array("phụ kiện 3",17000000,1),
+                    "phukien4"=>array("phụ kiện 4",6000000,1),
+                    "phukien5"=>array( "phụ kiện 5",19000000,1),
+                    "phukien6"=>array("phụ kiện 6",7000000,1),
+                    "phukien7"=>array( "phụ kiện 7",21000000,1),
+                    "phukien8"=>array("phụ kiện 8",13000000,1)
                 );
-                $Ten = array(
-                    "Phụ Kien 1",
-                    "Phụ Kien 2",
-                    "Phụ Kien 3",
-                    "Phụ Kien 4",
-                    "Phụ Kien 5",
-                    "Phụ Kien 6",
-                    "Phụ Kien 7",
-                    "Phụ Kien 8",
-                );
-                if(isset($_GET['PhanLoai']))
-                $PhanLoai = $_GET['PhanLoai'];
-                for($i=1;$i<=8;$i++)
+                //if(isset($_GET['PhanLoai']))
+                //$PhanLoai = $_GET['PhanLoai'];
+                foreach($Phukien as $ten => $info)
                 {
             ?>
                 <div class="product-item">
                     <div class="container-item">
-                    <a href="trangcon.php?PhanLoai=<?php echo $PhanLoai,$i,"&&Giatien=",$GiaTien[$i-1],"&&Ten=",$Ten[$i-1];?>">
-                        <img src="./image/<?php echo $PhanLoai,$i;?>.jpg" width="260px" height="270px" alt="">
+                    <a href="trangcon.php?PhanLoai=<?php echo $ten,"&&Giatien=",$info[1],"&&Ten=",$info[0],"&&SoLuong=",$info[2];?>">
+                        <img src="./image/<?php echo $ten;?>.jpg" width="260px" height="270px" alt="">
                     </a>
                     </div>
                     <div class="product-item-info">
-                            <span style="color:#333; font-family: 'Coiny', cursive; font-weight: 700;"><a href="trangcon.php?PhanLoai=<?php echo $PhanLoai,$i,"&&Giatien=",$GiaTien[$i-1],"&&Ten=",$Ten[$i-1];?>"><?php echo $Ten[$i-1]; ?></a></span>
-                            <span style="color:#de8ebe;"><?php echo $GiaTien[$i-1]; ?></span>
+                            <span style="color:#333; font-family: 'Coiny', cursive; font-weight: 700;"><a href="trangcon.php?PhanLoai=<?php echo $ten,"&&Giatien=",$info[1],"&&Ten=",$info[0],"&&SoLuong=",$info[2];?>"><?php echo $info[0]; ?></a></span>
+                            <span style="color:#de8ebe;"><?php echo number_format($info[1],0,",","."); ?></span>
                     </div>
                 </div>
                 <?php 

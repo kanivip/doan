@@ -27,26 +27,29 @@
             <div class="product-amount">
                 <span>Số lượng:</span>
                 <?php 
+                $sl;
                 if(isset($_GET['Tang']))
-                    $_GET['SoLuong'] +=1;
+                    {
+                        $sl=$_GET['SoLuong'];
+                        $sl ++;
+                        $_GET['SoLuong'] = $sl;
+                    }
+                    $_SESSION['SoLuong'] = $_GET['SoLuong'];
                 ?>
-                <a href="trangcon.php?PhanLoai=<?php echo $_GET['PhanLoai']?>&&Giatien=<?php echo $_GET['Giatien']?>&&Ten=<?php echo $_GET['Ten']?>&&SoLuong=<?php if(isset($_GET['SoLuong'])) echo $_GET['SoLuong']; else echo 1; ?>&&Tang" ><i class="far fa-plus-square" ></i></a>
-                <?php
+                <a href="trangcon.php?PhanLoai=<?php echo $_GET['PhanLoai']?>&&Giatien=<?php echo $_GET['Giatien']?>&&Ten=<?php echo $_GET['Ten']?>&&SoLuong=<?php if(isset($_SESSION['SoLuong'])) echo $_SESSION['SoLuong'];?>&&Tang" ><i class="far fa-plus-square" ></i></a>
+                <?php 
                 if(isset($_GET['Giam']))
-                {
-                    $_GET['SoLuong']-=1;
-                    if($_GET['SoLuong']<1)
-                        $_GET['SoLuong']=1;
-                }
-                         
+                    $_GET['SoLuong'] -=1;
+                    if($_GET['SoLuong'] <1)
+                        $_GET['SoLuong'] =1;
+                    $_SESSION['SoLuong'] = $_GET['SoLuong'];
                 ?>
                 <a href="trangcon.php?PhanLoai=<?php echo $_GET['PhanLoai']?>&&Giatien=<?php echo $_GET['Giatien']?>&&Ten=<?php echo $_GET['Ten']?>&&SoLuong=<?php if(isset($_GET['SoLuong'])) echo $_GET['SoLuong']; else echo 1; ?>&&Giam" ><i class="far fa-minus-square"></i></a>
-                <input id="SoLuong" type="text" value="<?php if(isset($_GET['SoLuong'])) echo $_GET['SoLuong']; else echo 1;  ?>">
-
-
+                <input id="SoLuong" type="text" value="<?php if(isset($_SESSION['SoLuong'])) echo $_SESSION['SoLuong']; else echo $_GET['SoLuong'];?>"> 
+                <?php var_dump($_SESSION['SoLuong']) ?>;
             </div>
             <div class="cart" style="margin-left:0px; margin-top:20px;">
-                <a href="trangcon.php?PhanLoai=<?php echo $_GET['PhanLoai']?>&&Giatien=<?php echo $_GET['Giatien']?>&&Ten=<?php echo $_GET['Ten']?>&&ThemGH" class="cart-link">
+                <a href="trangcon.php?PhanLoai=<?php echo $_GET['PhanLoai']?>&&Giatien=<?php echo $_GET['Giatien']?>&&Ten=<?php echo $_GET['Ten']?>&&SoLuong=<?php if(isset($_GET['SoLuong'])) echo $_GET['SoLuong']; else echo 1; ?>&&ThemGH" class="cart-link">
                     <div class="cart-border">
                         <span style="color:white;">Thêm vào giỏ hàng</span>
                     </div>

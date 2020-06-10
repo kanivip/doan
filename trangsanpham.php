@@ -55,7 +55,7 @@ include_once('includes/header.php');
                         </div>
                         <div class="product-item-info">
                             <span style="color:#333; font-family: 'Coiny', cursive; font-weight: 700;"><a href="trangcon.php?pet=<?php echo $PhanLoai,$i,"&&Giatien=",$GiaTien[$i],"&&TenPet=",$Ten[$i];?>"><?php echo $Ten[$i]; ?></a></span>
-                            <span style="color:#de8ebe;"><?php echo $GiaTien[$i]; ?></span>
+                            <span style="color:#de8ebe;"><?php echo number_format($GiaTien[$i],0,",","."); ?></span>
                         </div>
                         </div>
                         <?php
@@ -79,7 +79,7 @@ include_once('includes/header.php');
                         </div>
                         <div class="product-item-info">
                                 <span style="color:#333; font-family: 'Coiny', cursive; font-weight: 700;"><a href="trangcon.php?pet=<?php echo $PhanLoai,$i,"&&Giatien=",$GiaTien[$i-1],"&&TenPet=",$Ten[$i-1];?>"><?php echo $Ten[$i-1]; ?></a></span>
-                                <span style="color:#de8ebe;"><?php echo $GiaTien[$i-1]; ?></span>
+                                <span style="color:#de8ebe;"><?php echo number_format($GiaTien[$i-1],0,",","."); ?></span>
                         </div>
                     </div>
                     <?php 
