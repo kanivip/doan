@@ -62,9 +62,9 @@ a {
     display: flex;
     flex-direction: column;
     display: none;
-    width:180px;
-
+    width:200px;
 }
+
 .navbar ul li ul a{
     border-bottom:1px ridge rgb(184, 184, 184);
     border-radius: 0px;

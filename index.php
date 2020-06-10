@@ -70,7 +70,7 @@ function topFunction() {
                         <div>
                         <span class="cart-number-product cart-tittle"><?php if(isset($_SESSION['GH']))  echo count($_SESSION['GH']); else echo 0;?> </span>
                         <span class="cart-number-product cart-tittle">sản phẩm - </span>
-                        <span class="cart-number-money cart-tittle"><u><?php if(isset($_SESSION['GH']))  echo (string)array_sum($_SESSION['GH']); else echo 0;?>đ</u></span>
+                        <span class="cart-number-money cart-tittle"><u><?php if(isset($_SESSION['GH']))  echo number_format((string)array_sum($_SESSION['GH']),0,",","."); else echo 0;?>đ</u></span>
                         </div>
                         </div>
                     </div>

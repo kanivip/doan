@@ -40,7 +40,7 @@ function ThemCham($a){
     <ul>
         <li>Tông Cộng:</li>
         <li>Số lượng</li>
-        <li><?php echo ThemCham(array_sum($_SESSION['GH'])); ?></li>
+        <li><?php echo number_format((string)array_sum($_SESSION['GH']),0,",","."); ?></li>
     </ul>
 </div>
 </div>
