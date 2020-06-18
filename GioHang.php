@@ -2,18 +2,13 @@
 <style>
 .Title ul{
     display:flex;
-    padding:0px 20%;
+    padding:0px 10%;
 }
 .Title ul li{
     padding:1% 10%;
-    width:200px;
+    width:300px;
 }
 </style>
-<?php 
-function ThemCham($a){
-    return substr($a,0,3).".".substr($a,3,3).".".substr($a,6,3);
-}
-?>
 <div class="container-cart">
 <div class="Title">
     <ul>
@@ -23,8 +18,10 @@ function ThemCham($a){
     </ul>
 </div>
 <?php 
-    foreach($_SESSION['GH'] as $Ten => $info)
+    if(isset($_SESSION['GH']))
     {
+    foreach($_SESSION['GH'] as $Ten => $info)
+        {
         ?>
         <div class="Title">
             <ul>
@@ -34,13 +31,18 @@ function ThemCham($a){
             </ul>
         </div>
 <?php
-    }
+        }
+
 ?>
 <div class="Title">
     <ul>
         <li>Tông Cộng:</li>
         <li>Số lượng</li>
-        <li><?php echo number_format((string)array_sum($_SESSION['GH']),0,",","."); ?></li>
+        <li><?php  echo number_format((string)array_sum($_SESSION['GH']),0,",","."); 
+            }
+            else
+            echo "Bạn chưa có sản phẩm nào";
+        ?></li>
     </ul>
 </div>
 </div>

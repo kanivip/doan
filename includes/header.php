@@ -69,7 +69,11 @@ function topFunction() {
             <div class="navbar">
             <ul>
                 <li style="background-color: #de8ebe;"><a class="menu-link" style=" color: white;"href="index.php">TRANH CHỦ</a></li>
+                <?php if(isset($_SESSION['user'])) {?>
+                <li><a class="menu-link" href="logout.php">ĐĂNG XUẤT</a></li>
+                <?php }else{?>
                 <li><a class="menu-link" href="login.php">ĐĂNG NHẬP</a></li>
+                <?php } ?>
                 <li><a class="menu-link" href="#">THÚ CƯNG<i class="fas fa-angle-down" style="margin: 8px;"></i></a>
                     <ul>
                     <a href="trangsanpham.php?tensp=Alaska Malamute"><li>Chó alaska Malamute</li></a>
@@ -93,7 +97,7 @@ function topFunction() {
                     <div class="cart-border">
                         <i class="fas fa-shopping-cart " style=" font-size: 27px; padding: 10px 5px; color: white;"></i>
                         <div class="cart-info">
-                        <span class="cart-tittle"><strong style="font-size: 1.6rem;">Giỏ hàng</strong></span>
+                        <span class="cart-tittle"><strong style="font-size: 1.6rem;">Giỏ hàng <?php if(isset($_SESSION['user'])) echo "của ".$_SESSION['user']; else echo" ";?></strong></span>
                         <div>
                         <span class="cart-number-product cart-tittle"><?php if(isset($_SESSION['GH']))  echo count($_SESSION['GH']); else echo 0;?> </span>
                         <span class="cart-number-product cart-tittle">sản phẩm - </span>

@@ -1,8 +1,14 @@
-<?php 
-    $connect = mysqli_connect("localhost","id13680425_shoppet2k","","id13680425_database");
-    if (!$connect) {
-        die("Connection failed: " . mysqli_connect_error());
-  }
-   
-  echo "Connected successfully";
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "demo";
+// Create connection
+$conn = mysqli_connect($servername, $username, $password,$database,"3308");
+
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
 ?>
