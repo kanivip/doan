@@ -1,5 +1,6 @@
 <?php 
     include_once('includes/header.php');
+    include_once('includes/connect.php');
 ?>
 <div class="container-product">
     <div class="top-like">
@@ -18,54 +19,87 @@
         </div>
     </div>
     <div class="product-info-details">
+        <?php
+            $idSP = $_REQUEST['idSP'];
+            $sql = "select * from SanPham where idSP = $idSP ";
+            $result = mysqli_query($conn,$sql);
+            if($result)
+            {
+                while($row=mysqli_fetch_row($result))
+                {
+            
+        ?>
         <div class="product-image">
-            <img src="./image/<?php echo $_GET['PhanLoai'];?>.jpg" width="260px" height="260px"alt="cho">
+            <img src="<?php echo $row[3];?>" width="260px" height="260px"alt="cho">
         </div>
         <div class="product-details">
-            <h1><?php echo $_GET['Ten'] ?></h1>
-            <span>Giá tiền:<?php echo $_GET['Giatien'];?></span>
+            <h1><?php echo $row[2]; ?></h1>
+            <span>Giá tiền:<?php echo number_format($row[4],0,'.',',');?></span>
             <div class="product-amount">
                 <span>Số lượng:</span>
-                <?php 
-                $sl;
-                if(isset($_GET['Tang']))
-                    {
-                        $sl=$_GET['SoLuong'];
-                        $sl ++;
-                        $_GET['SoLuong'] = $sl;
-                    }
-                    $_SESSION['SoLuong'] = $_GET['SoLuong'];
-                ?>
-                <a href="trangcon.php?PhanLoai=<?php echo $_GET['PhanLoai']?>&&Giatien=<?php echo $_GET['Giatien']?>&&Ten=<?php echo $_GET['Ten']?>&&SoLuong=<?php if(isset($_SESSION['SoLuong'])) echo $_SESSION['SoLuong'];?>&&Tang" ><i class="far fa-plus-square" ></i></a>
-                <?php 
-                if(isset($_GET['Giam']))
-                    $_GET['SoLuong'] -=1;
-                    if($_GET['SoLuong'] <1)
-                        $_GET['SoLuong'] =1;
-                    $_SESSION['SoLuong'] = $_GET['SoLuong'];
-                ?>
-                <a href="trangcon.php?PhanLoai=<?php echo $_GET['PhanLoai']?>&&Giatien=<?php echo $_GET['Giatien']?>&&Ten=<?php echo $_GET['Ten']?>&&SoLuong=<?php if(isset($_GET['SoLuong'])) echo $_GET['SoLuong']; else echo 1; ?>&&Giam" ><i class="far fa-minus-square"></i></a>
-                <input id="SoLuong" type="text" value="<?php if(isset($_SESSION['SoLuong'])) echo $_SESSION['SoLuong']; else echo $_GET['SoLuong'];?>"> 
-                <?php var_dump($_SESSION['SoLuong']) ?>;
+                <button onclick="Cong()"><i class="far fa-plus-square" ></i></button>
+                <button onclick="Tru()"><i class="far fa-minus-square"></i></button>
+                <form action="trangcon.php" method="post">
+                <input id="SoLuong" type="text" name="SoLuong" value="1"></br>
+                <label>ID Sản Phảm:</label>
+                <input  type="text" name="idSP" value="<?php echo $_REQUEST['idSP']; ?>" style="width:40px;border:none; " readonly >
             </div>
+            <?php 
+            ?>
             <div class="cart" style="margin-left:0px; margin-top:20px;">
-                <a href="trangcon.php?PhanLoai=<?php echo $_GET['PhanLoai']?>&&Giatien=<?php echo $_GET['Giatien']?>&&Ten=<?php echo $_GET['Ten']?>&&SoLuong=<?php if(isset($_GET['SoLuong'])) echo $_GET['SoLuong']; else echo 1; ?>&&ThemGH" class="cart-link">
+                <button class="cart-link" type="submit" name ="ThemGH">
                     <div class="cart-border">
                         <span style="color:white;">Thêm vào giỏ hàng</span>
                     </div>
-                </a>
+                </button>
             </div>
-            <div style="padding-top:10px;">Thông tin:Một chú chó Poodle Tiny nhỏ xinh luôn là 
-                sự lựa chọn 
-                hàng đầu của những người chơi thú cưng Việt Nam.
-                 Tìm mua được một em Poodle Tiny chó trắng lông xù
-                  nữa thì càng tuyệt vời. Tuy các em ấy có phần 
-                  đanh đá , lắm mồm nhưng bù lại rất thông minh, 
-                  biết cách làm nũng chủ nên chưa bao giờ bị “thất 
-                  sủng”.
+            </form>
+            
+            <div style="padding-top:10px;">Thông tin:<?php echo $row[6]; ?>
             </div>
         </div>
+        <?php 
+                }
+            }
+        ?>
     </div>
+</div>
+<?php
+    if(isset($_GET['comment']))
+        ThemBL($_SESSION['user'],$_GET['idSP'],$_GET['noidungbl'],$conn);
+?>
+<div style="margin-left: 30%; margin-top:20px;">
+    <div>
+    <?php if(isset($_SESSION['user']))
+    {
+            echo $_SESSION['user'];
+    ?>
+    </div>
+    <form action="trangcon.php" method="get">
+    <input type="text" name="idSP" value="<?php echo $idSP; ?>" style="display:none;">
+    <div>
+    <textarea name="noidungbl" cols="40" rows="3" required></textarea>
+    </div>
+    <button type="submit" name="comment">Bình luận</button>
+    </form>
+    <?php } ?>
+</div>
+<?php 
+$id = $_REQUEST['idSP'];
+$sql = "select * from binhluan where id_SP = $id";
+$result = mysqli_query($conn,$sql);
+while($row = mysqli_fetch_assoc($result))
+{
+?>
+    <div style="margin-left:30%; margin-top:20px; width:30%; border: 2px solid black; background-color:rgba(199, 128, 171, 1);">
+        <h2><?php echo $row['username']; ?></h2>
+        <span><?php echo $row['noidung']; ?></span>
+        </div>
+    </div>
+    </div>
+    <?php
+}
+    ?>
 </div>
 <?php 
     include_once('includes/footer.php');

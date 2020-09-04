@@ -38,6 +38,8 @@
         if(mysqli_num_rows($check)>0)
         {
             $_SESSION['user'] = $_POST['username'];
+            $row= mysqli_fetch_assoc($check);
+            $_SESSION['typeuser'] = $row['typeuser'];
             header('location:index.php');
         }
         else

@@ -1,7 +1,20 @@
-<!DOCTYPE html>
 <?php 
 session_start();
+include('includes/connect.php');
+include('includes/function.php');
 ?>
+<?php
+if(isset($_GET['act']) && isset($_GET['id']))
+{
+    unset($_SESSION['GH'][$_GET['id']]);
+}
+?>
+<?php 
+        //Them GH
+        if(isset($_POST['idSP'])&&isset($_POST['SoLuong'])&&isset($_POST['ThemGH']))
+            ThemGH($_POST['idSP'],$_POST['SoLuong'],$conn);
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,6 +23,8 @@ session_start();
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/fontawesome-free-5.12.1-web/fontawesome-free-5.12.1-web/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600&family=Roboto&display=swap" rel="stylesheet">
+    <script src="css/javascript.js"></script>
+    <script src="./includes/jquery-3.5.1.min.js"></script>
 </head>
 <body>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
@@ -35,60 +50,40 @@ function topFunction() {
 }
 </script>
     <div class="container-full">
-
-    <?php 
-//Gio Hang
-    if(isset($_GET['ThemGH']))
-    {
-        $GH = array();
-        if(isset($_SESSION['GH']))
-            $GH=$_SESSION['GH'];
-        $flag = false;
-        foreach($GH as $ma => $tien)
-        {
-            if($ma ==$_GET['Ten'])
-            {
-            $GH[$ma] +=$_GET['Giatien']*$_GET['SoLuong'];
-            $flag=true;
-            break;
-            }
-        }
-        if(!$flag)
-        {
-            $GH[$_GET['Ten']] = $_GET['Giatien'];
-        }
-        $_SESSION['GH'] = $GH;
-    }
-
-    ?>
     <header>
-        <div class="logo"  >
+        <div class="logo1"  >
         <a href="index.php"><img src="./image/mat-pet-logo-300x297.png" width="100%" height="180px" alt="logo pet" class="header-logo"></a>
         </div>
         <div class="container">
             <div class="navbar">
-            <ul>
+            <ul >
                 <li style="background-color: #de8ebe;"><a class="menu-link" style=" color: white;"href="index.php">TRANH CHỦ</a></li>
+                
                 <?php if(isset($_SESSION['user'])) {?>
                 <li><a class="menu-link" href="logout.php">ĐĂNG XUẤT</a></li>
                 <?php }else{?>
                 <li><a class="menu-link" href="login.php">ĐĂNG NHẬP</a></li>
                 <?php } ?>
+                <li><a class="menu-link" href="register.php">ĐĂNG KÍ</a></li>
                 <li><a class="menu-link" href="#">THÚ CƯNG<i class="fas fa-angle-down" style="margin: 8px;"></i></a>
                     <ul>
-                    <a href="trangsanpham.php?tensp=Alaska Malamute"><li>Chó alaska Malamute</li></a>
-                        <a href="trangsanpham.php?tensp=Chó Beagle"><li>Chó Beagle</li></a>
-                        <a href="trangsanpham.php?tensp=Chó Corgi"><li>Chó corgi</li></a>
-                        <a href="trangsanpham.php?tensp=Husky Sibersian"><li>Chó Husky Siberian</li></a>
+                    <?php 
+                        $sql = "select MaLoai,TenLoai from loaisp where PhanLoai = 'dog'";
+                        $result = mysqli_query($conn,$sql);
+                        if($result)
+                        {
+                            while($row = mysqli_fetch_assoc($result))
+                            {
+                    ?>
+
+                        <a href="trangsanpham.php?LoaiSP=<?php echo $row['MaLoai'] ?>&&tensp=<?php echo "Chó ".$row['TenLoai'] ?>"><li><?php echo "Chó ".$row['TenLoai'] ?></li></a>
+            <?php
+                            }
+                        }
+            ?>
                     </ul>
                 </li>
-                <li><a class="menu-link" href="#">PHỤ KIỆN</a></li>
-                <li><a class="menu-link" href="#">DỊCH VỤ<i class="fas fa-angle-down" style="margin: 8px;"></i></a>
-                    <ul>
-                        <a href="#"><li>SPA</li></a>
-                        <a href="#"><li>Khách sạn thú cưng</li></a>
-                    </ul>
-                </li>
+                <li><a class="menu-link" href="index.php?mod=product&act=phukien">PHỤ KIỆN</a></li>
                 <li><a class="menu-link" href="#">GIỚI THIỆU</a></li>
                 
             </ul>
@@ -101,7 +96,7 @@ function topFunction() {
                         <div>
                         <span class="cart-number-product cart-tittle"><?php if(isset($_SESSION['GH']))  echo count($_SESSION['GH']); else echo 0;?> </span>
                         <span class="cart-number-product cart-tittle">sản phẩm - </span>
-                        <span class="cart-number-money cart-tittle"><u><?php if(isset($_SESSION['GH']))  echo number_format((string)array_sum($_SESSION['GH']),0,",","."); else echo 0;?>đ</u></span>
+                        <span class="cart-number-money cart-tittle"><u><?php if(isset($_SESSION['GH']))  echo number_format(TongTien($_SESSION['GH']),0,",","."); else echo 0;?>đ</u></span>
                         </div>
                         </div>
                     </div>
@@ -110,8 +105,10 @@ function topFunction() {
             </div>
             <img src="./image/MatPetBanner.png" alt="hình pet" width="100%">
             <div class="search-bar" >
-                <input type="text" class="search" placeholder="Tìm kiếm...">    
+            <form action="search.php" method="post">
+                <input type="text" class="search" placeholder="Tìm kiếm..." name="keyword">    
                 <button type="submit" placeholder=" " class="submit-button"><i class="fas fa-search" style="color: white;"></i></button>
+                </form>
             </div>
         </div>
     </header>

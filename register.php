@@ -51,10 +51,14 @@
             echo "Nhập lại mật khẩu chưa trùng"."</br>";
             $flag = false;
         }
-        $partten = "/^([A-Z]){1}([\w_\.!@#$%^&*()]+){5,31}$/";
+        $partten = "/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8,32}$/";
         if(preg_match($partten ,$password)==0)
         {
-            echo  "Mật khẩu của bạn phải gồm:</br>- 6-32 ký tự</br>- Chữ đầu viết hoa</br>- Có ít nhất 1 ký tự đặc biệt ";
+            echo  "Mật khẩu của bạn phải gồm:
+            </br>- 6-32 ký tự
+            </br>- Có ít nhất 1 chữ viết hoa
+            </br>- Có ít nhất 1 chữ số
+            </br>- Có ít nhất 1 ký tự đặc biệt ";
             $flag = false;
         }
         if($flag)
