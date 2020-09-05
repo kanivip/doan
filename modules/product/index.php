@@ -36,21 +36,22 @@
                 } 
                 ?>
                 <script>
-                $(document).ready(function(){
-                $(".more").click(function(){
-                    $.ajax({
-                    method: "POST",
-                    url: "jaxmore.php",
-                    data: { name: "John", location: "Boston" }
-                    })
-                    .done(function( msg ) {
-                        alert( "Data Saved: " + msg );
+                    $(document).ready(function(){
+                    $(".more").click(function(){
+                        $.post("jaxmore.php",
+                        {
+                        name: "Donald Duck"
+                        },
+                        function(data){
+                        $("#noidung").html(data);
+                        });
                     });
-                });
+                    });
                 </script>
-                <div class="more">
-                Xem thêm
+                <div id="noidung">
+                ahihi
                 </div>
+                <input type="button" class="more" value = "xem them">
             </div>
             
             <h2 style="text-align:center;" class="product-tittle">
