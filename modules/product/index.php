@@ -12,7 +12,7 @@
             <div class="product-info">
             <?php  
                 $timenow=date('Y-m-d H:i:s');
-                $sql="SELECT *, datediff('$timenow',ngaythem) as datenew FROM SanPham where LoaiSP = 'ALK' order by ngaythem desc limit 0, 8";
+                $sql="SELECT *, datediff('$timenow',ngaythem) as datenew FROM SanPham where LoaiSP = 'ALK' order by ngaythem desc limit 0, 4";
                 $result = mysqli_query($conn, $sql);
                 if($result)
                 {
@@ -37,19 +37,20 @@
                 ?>
                 <script>
                     $(document).ready(function(){
+                        var start = 4;
                     $(".more").click(function(){
                         $.post("jaxmore.php",
                         {
-                        name: "Donald Duck"
+                        start: start
                         },
                         function(data){
                         $("#noidung").html(data);
+                        start +=4;
                         });
                     });
                     });
                 </script>
                 <div id="noidung">
-                ahihi
                 </div>
                 <input type="button" class="more" value = "xem them">
             </div>

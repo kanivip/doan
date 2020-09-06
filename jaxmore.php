@@ -4,8 +4,9 @@
             ?>
 <div class="product-info">
 <?php
+                $start = $_POST['start'];
                 $timenow=date('Y-m-d H:i:s');
-                $sql="SELECT *, datediff('$timenow',ngaythem) as datenew FROM SanPham where LoaiSP = 'ALK' order by ngaythem desc limit 8, 8";
+                $sql="SELECT *, datediff('$timenow',ngaythem) as datenew FROM SanPham where LoaiSP = 'ALK' order by ngaythem desc limit 4, $start";
                 $result = mysqli_query($conn, $sql);
                 if($result)
                 {
