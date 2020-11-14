@@ -9,4 +9,4 @@ Chức năng cơ bản:</br>
   ...</br>
 Khuyết điểm:</br>
 -Code lộn xộn( Nên học mô hình MVC)</br>
--Web chưa có responsion(Tìm hiểu về Bootstrap)
+-Web chưa có responsive(Tìm hiểu về Bootstrap)
