@@ -1,12 +1,12 @@
 # doan
 Trang web đầu tiên.</br>
-Cơ sở dữ liệu:database/demo.sql
-Chức năng cơ bản: 
-  -Hiển thị sản phẩm
-  -Giỏ hàng
-  -Đặt hàng
-  -Đăng nhập, Đăng xuất
-  ...
-Khuyết điểm:
--Code lộn xộn( Nên học mô hình MVC)
+Cơ sở dữ liệu:database/demo.sql</br>
+Chức năng cơ bản:</br> 
+  -Hiển thị sản phẩm</br>
+  -Giỏ hàng</br>
+  -Đặt hàng</br>
+  -Đăng nhập, Đăng xuất</br>
+  ...</br>
+Khuyết điểm:</br>
+-Code lộn xộn( Nên học mô hình MVC)</br>
 - Web chưa có responsion(Tìm hiểu về Bootstrap)
